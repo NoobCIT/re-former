@@ -1,0 +1,24 @@
+<!-- Using the form_for -->
+<% if @user.errors.any? %>
+  <div id="list_of_errors">
+    <%= pluralize(@user.errors.count, "error") %>
+    prohibited this user data from being saved: </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username, placeholder: "Enter Name" %><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "Enter Email" %><br>
+
+  <%= f.label :password %>
+  <%= f.text_field :password, placeholder: "Secret" %><br>
+
+  <%= f.submit %>
+<% end %>
